@@ -1,4 +1,4 @@
- Multiprocessing vs Multithreading in Python
+Multiprocessing vs Multithreading in Python
 
 ===========Overview============
 The difference between multiprocessing and multithreading in Python is shown by this project.
@@ -47,6 +47,7 @@ Observe execution times for both sections.
 .Multiprocessing is significantly better for CPU-bound tasks, as each process runs independently on separate CPU cores.
 .Multithreading is more suitable for I/O-bound tasks (like network requests or file I/O), where threads can work concurrently without heavy CPU competition.
 .For this experiment, multiprocessing proved nearly 3x faster than multithreading for the same workload.
+
 
 
 
