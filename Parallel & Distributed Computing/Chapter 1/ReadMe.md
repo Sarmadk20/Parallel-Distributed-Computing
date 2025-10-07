@@ -28,6 +28,7 @@ You can replace it with your own function (e.g., file reading, API calls, matrix
 -It measures execution time for both and prints a comparison.
 
 ===========How to Run===========
+
 Save both files in the same directory.
 Run the script:
 python multithreading_test.py
@@ -47,6 +48,7 @@ Observe execution times for both sections.
 .Multiprocessing is significantly better for CPU-bound tasks, as each process runs independently on separate CPU cores.
 .Multithreading is more suitable for I/O-bound tasks (like network requests or file I/O), where threads can work concurrently without heavy CPU competition.
 .For this experiment, multiprocessing proved nearly 3x faster than multithreading for the same workload.
+
 
 
 
