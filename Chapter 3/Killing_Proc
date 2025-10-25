@@ -1,0 +1,41 @@
+import multiprocessing
+import time
+import random
+import os
+
+def download_file(file_name):
+    print(f"[{file_name}] PID {os.getpid()} Download started...")
+    for i in range(1, 6):
+        time.sleep(random.uniform(0.5, 1.5))
+        print(f"[{file_name}] {i*20}% downloaded")
+    print(f"[{file_name}] Download completed!")
+
+if __name__ == "__main__":
+    downloads = [
+        multiprocessing.Process(target=download_file, args=("File_A",)),
+        multiprocessing.Process(target=download_file, args=("File_B",)),
+        multiprocessing.Process(target=download_file, args=("File_C",))
+    ]
+
+    for process in downloads:
+        process.start()
+
+    print("\nAll downloads started! Checking status...\n")
+    time.sleep(2)
+
+    for i, process in enumerate(downloads):
+        print(f"File {i+1} alive:", process.is_alive())
+
+    print("\nUser cancelled File_B!")
+    downloads[1].terminate()
+    downloads[1].join()
+
+    print("\nWaiting for other downloads to finish...")
+    downloads[0].join()
+    downloads[2].join()
+
+    print("\nFinal status:")
+    for i, process in enumerate(downloads):
+        print(f"File {i+1} exit code:", process.exitcode)
+
+    print("\nAll processes finished or terminated!")
